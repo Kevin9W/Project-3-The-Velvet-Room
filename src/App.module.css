@@ -1,0 +1,28 @@
+html{
+	font-family:Cinzel,serif;
+	background-color:black;
+}
+.App{
+	background:url(./images/VelvetRoom.jpg);
+	background-size:cover;
+	height:675px;
+	background-repeat:no-repeat;
+	color:#FFFFFF;
+}
+.grid{
+	display:grid;
+	grid-template-columns:auto;
+	grid-template-rows:50px auto;
+}
+.nav{
+	display:flex;
+	grid-area:1,1,2,2;
+	flex-wrap:wrap;
+	background:black;
+}
+.link{
+	margin:10px;
+	color:#FFFFFF;
+	align-items:center;
+	text-decoration:none;
+}

@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Link, Route, Switch} from 'react-router-dom'
+import Home from './components/Home'
+import PersonasContainer from './containers/PersonasContainer'
+import styles from './App.module.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+let App=()=>{
+  return(
+    <div className={styles.App}>
+      <div className={styles.grid}>
+        <nav className={styles.nav}>
+          <Link className={styles.link} to="/">Home</Link>
+          <Link className={styles.link} to="/personas">Compendium</Link>
+          <Link className={styles.link} to="/skills">Skills</Link>
+        </nav>
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route path="/personas" component={PersonasContainer}/>
+        </Switch>
+      </div>
     </div>
-  );
+  )
 }
 
 export default App;
