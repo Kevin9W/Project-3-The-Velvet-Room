@@ -30,7 +30,7 @@ class PersonasContainer extends Component{
 		return(
 			<>
 				<h1>Compendium</h1>
-				<Link to="/personas/create">
+				<Link to="/personas/register">
 					<button>
 					Register a new persona
 					</button>

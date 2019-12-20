@@ -31,7 +31,7 @@ class PersonasModel{
 		})
 		.catch(error=>console.log("Failed to update data",error))
 	}
-	static delete=(name,callback)=>{
+	static deletePersona=(name)=>{
 		fetch(endPoint+"/"+name,{
 			headers:{
         'Content-Type':'application/json'
@@ -39,7 +39,6 @@ class PersonasModel{
       method:"DELETE",
 		})
 		.catch(error=>console.log("Failed to delete data"))
-		callback()
 	}
 	static getSkills=(data)=>{
 		return fetch('http://localhost:9000/api/skills')

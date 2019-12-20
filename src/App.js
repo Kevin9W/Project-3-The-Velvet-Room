@@ -25,7 +25,7 @@ class App extends Component{
           <Switch>
             <Route exact path="/" component={Home}/>
             <Route exact path="/personas" component={PersonasContainer}/>
-            <Route exact path="/personas/create" component={PersonaForm}/>
+            <Route exact path="/personas/register" component={PersonaForm}/>
             <Route exact path="/personas/:name" 
                    render={props=><PersonaInfo{...props} editContent={this.editContent}/>}
 

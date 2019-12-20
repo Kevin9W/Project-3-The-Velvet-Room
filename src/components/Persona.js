@@ -4,10 +4,9 @@ import PersonasModel from '../model/PersonasModel'
 
 class Persona extends Component{
 	handleDelete=()=>{
-		PersonasModel.delete(this.props.data.name,()=>{
-			this.props.fetchData()
-		})
-
+		PersonasModel.deletePersona(this.props.data.name)
+		alert("Deleted "+this.props.data.name)
+		this.props.fetchData()
 	}
 	render(){
 		let link=`/personas/${this.props.data.name}`

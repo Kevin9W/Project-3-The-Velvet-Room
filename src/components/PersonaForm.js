@@ -3,7 +3,7 @@ import PersonasModel from '../model/PersonasModel'
 
 class PersonaForm extends Component{
 	state={
-		operate:"create",
+		operate:"register",
 		title:"New Persona",
 		info:{
 			name:"",
@@ -43,13 +43,13 @@ class PersonaForm extends Component{
 		event.preventDefault()
 		let skills=this.state.skills.filter(skill=>skill!=="")
 		let data={
-			name:this.state.info.name,
+			name:this.state.info.name!=="" ? this.state.info.name : "unnamed",
 			arcana:this.state.info.arcana,
 			stats:[this.state.stats],
 			elementals:[this.state.elementals],
 			skills:skills
 		}
-		if (this.state.operate==="create"){
+		if (this.state.operate==="register"){
 			PersonasModel.add(data)
 			alert(`You have registered ${data.name}!`)
 		}
@@ -127,7 +127,8 @@ class PersonaForm extends Component{
 					skillValue=this.state.skills[i].name
 				}
 				skillsInput.push(
-					<select type="dropdown" key={i} className="skill" value={skillValue} onChange={this.handleChangeSkills}>
+					<select type="dropdown" key={i} className="skill" value={skillValue} onChange={this.handleChangeSkills}
+						style={{display:"block"}}>
 						{i}
 						{skillsOptions}
 					</select>)
