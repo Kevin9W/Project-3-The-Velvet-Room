@@ -1,0 +1,14 @@
+.container{
+	background:rgba(0, 0, 0, 0.50);
+	display:flex;
+	justify-content:center;
+}
+.items{
+	margin:10px;
+}
+.item{
+	color:#d40203;
+	font-size:18px;
+	padding:5px;
+	border-bottom:1px #d40203 solid;
+}

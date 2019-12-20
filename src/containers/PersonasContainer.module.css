@@ -1,0 +1,15 @@
+h1{
+	color:#d40203;
+}
+.header{
+	text-align:center;
+	background:rgba(0, 0, 0, 0.50);
+}
+.personaContainer{
+	display:flex;
+	justify-content:center;
+	flex-wrap:row;
+}
+.button{
+	margin:10px;
+}

@@ -18,7 +18,15 @@ class Persona extends Component{
 		let link=`/personas/${this.props.data.name}`
 		if (this.state.redirect){return <Redirect to={link}/>}
 		return(
-			<div className="persona">
+			<div 
+				style={{
+					background:"rgba(0, 0, 0, 0.50)",
+					"text-align":"center",
+					margin:"10px",
+					"border-radius":"10px",
+					padding:"10px",
+				}}
+				>
 				<h3>{this.props.data.name}</h3>
 				<h4>{this.props.data.arcana}</h4>
 					<button onClick={this.handleMoreInfo}>

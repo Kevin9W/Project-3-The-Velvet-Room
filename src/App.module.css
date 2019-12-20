@@ -4,6 +4,7 @@ html{
 }
 .App{
 	background:url(./images/VelvetRoom.jpg);
+	background-position:center center;
 	background-size:cover;
 	height:675px;
 	background-repeat:no-repeat;
@@ -19,8 +20,29 @@ html{
 	grid-area:1,1,2,2;
 	flex-wrap:wrap;
 	background:black;
+	justify-content:space-between;
 }
 .link{
+	margin:10px;
+	color:#FFFFFF;
+	align-items:center;
+	text-decoration:none;
+}
+.link:hover{
+	color:#d40203;
+}
+.links{
+	margin:13px 10px 10px 10px;
+	color:#FFFFFF;
+	align-items:center;
+	text-decoration:none;
+}
+@media (max-width:600px){
+	.navLinks{
+		background-color:#d40203
+	}
+}
+.title{
 	margin:10px;
 	color:#FFFFFF;
 	align-items:center;

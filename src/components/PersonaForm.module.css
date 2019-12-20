@@ -1,0 +1,21 @@
+h1{
+	text-align:center;
+}
+.container{
+	background:rgba(0, 0, 0, 0.50);
+}
+.flex{
+	display:flex;
+	justify-content:center;
+	align-items:flex-start;
+}
+.items{
+	display:inline-block;
+	margin:5px;
+}
+.label{
+	display:block;
+}
+button{
+	margin:10px;
+}

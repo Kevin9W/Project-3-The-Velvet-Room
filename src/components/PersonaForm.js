@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {Redirect} from 'react-router-dom'
 import PersonasModel from '../model/PersonasModel'
-
+import styles from './PersonaForm.module.css'
 class PersonaForm extends Component{
 	state={
 		operate:"register",
@@ -124,7 +124,7 @@ class PersonaForm extends Component{
 		})
 		let elementalsInput=Object.entries(this.state.elementals).map(([key,value])=>({key,value})).map((element,index)=>{
 			return <>
-				<label key={index+"c"} style={{display:"block"}}>{this.capitalize(element.key)}</label>
+				<label key={index+"c"} className={styles.label}>{this.capitalize(element.key)}</label>
 				<input key={index+"d"} 
 							 type="text" 
 							 className="elemental" 
@@ -157,12 +157,12 @@ class PersonaForm extends Component{
 		}
 		
 			return(
-			<div>
+			<div className={styles.container}>
 				<h1>{this.capitalize(this.state.operate)} {this.state.title}</h1>
-				<form onSubmit={this.handleSubmit}>
-					<div className="basic_info">
-						<>
-							<label style={{display:"block"}}>Name</label>
+				<form onSubmit={this.handleSubmit} >
+					<div className={styles.flex}>
+						<div className={styles.items}>
+							<label className={styles.label}>Name</label>
 							<input type="text" 
 										 className="name" 
 										 name="name" 
@@ -170,9 +170,7 @@ class PersonaForm extends Component{
 										 defaultValue={this.state.info.name} 
 										 onChange={this.handleChangeInfo}>
 							</input>
-						</>
-						<>
-							<label style={{display:"block"}}>Arcana</label>
+							<label className={styles.label}>Arcana</label>
 							<input type="text" 
 										 className="arcana" 
 										 name="arcana" 
@@ -180,21 +178,21 @@ class PersonaForm extends Component{
 										 defaultValue={this.state.info.arcana} 
 										 onChange={this.handleChangeInfo}>										 	
 							</input>
-						</>
-					</div>
-					<div style={{display:"flex"}}>
-						<div>
-							{statsInput}
 						</div>
-						<div>
-							{elementalsInput}
+							<div className={styles.items}>
+								{statsInput}
+							</div>
+							<div className={styles.items}>
+								{elementalsInput}
+							</div>
+							<div className={styles.items}>
+								<label>Skills</label>
+								{skillsInput}
+							</div>
 						</div>
-						<div>
-							<p>Skills</p>
-							{skillsInput}
+						<div className={styles.flex}>
+							<button type="submit">Submit</button>							
 						</div>
-					</div>
-						<button type="submit">Submit</button>
 				</form>
 			</div>
 		)

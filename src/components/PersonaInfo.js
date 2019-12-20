@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 import PersonasModel from '../model/PersonasModel'
+import styles from './PersonaInfo.module.css'
 
 class PersonaInfo extends Component{
 	state={
@@ -42,22 +43,30 @@ class PersonaInfo extends Component{
 		return(
 			this.state.data?
 			<>
-				<h1>{this.state.data.name}</h1>
-				<h2>{this.state.data.arcana}</h2>
-				<div className="stats">
-					{stats}
+				<div className={styles.container}>
+					<div className={styles.info}>
+						<h1>{this.state.data.name}</h1>
+						<h2>{this.state.data.arcana}</h2>
+						<Link to={editLink}>
+							<button onClick={this.editContentInfo}>
+								Edit
+							</button>
+						</Link>
+					</div>
+					<div className={styles.items}>
+						<p className={styles.item}>Stats</p>
+						{stats}
+					</div>
+					<div className={styles.items}>
+						<p className={styles.item}>Elementals</p>
+						{elements}
+					</div>
+					<div className={styles.items}>
+						<p className={styles.item}>Skills</p>
+						{skills}
+					</div>
 				</div>
-				<div className="elementals">
-					{elements}
-				</div>
-				<div>
-					{skills}
-				</div>
-				<Link to={editLink}>
-					<button onClick={this.editContentInfo}>
-						Edit
-					</button>
-				</Link>
+				
 			</>:"Loading..."
 		)
 	}

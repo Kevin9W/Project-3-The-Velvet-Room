@@ -22,6 +22,7 @@ class PersonasModel{
 		.catch(error=>console.log("Failed to post data",error))
 	}
 	static update=(name,data)=>{
+		
 		return fetch(endPoint+"/"+name,{
 			headers:{
         'Content-Type':'application/json'

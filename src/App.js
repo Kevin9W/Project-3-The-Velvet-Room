@@ -18,9 +18,13 @@ class App extends Component{
       <div className={styles.App}>
         <div className={styles.grid}>
           <nav className={styles.nav}>
-            <Link className={styles.link} to="/">Home</Link>
-            <Link className={styles.link} to="/personas">Compendium</Link>
-            <Link className={styles.link} to="/skills">Skills</Link>
+            <div className={styles.links}>
+              <Link className={styles.link} to="/">The Velvet Room</Link>
+            </div>
+            <div className={[styles.links,styles.navLinks].join(' ')}>
+              <Link className={styles.link} to="/personas">Compendium</Link>
+              <Link className={styles.link} to="/skills">Skills</Link>
+            </div>
           </nav>
           <Switch>
             <Route exact path="/" component={Home}/>
