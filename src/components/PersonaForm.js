@@ -1,9 +1,10 @@
 import React,{Component} from 'react';
+import {Link} from 'react-router-dom'
 import PersonasModel from '../model/PersonasModel'
 
 class PersonaForm extends Component{
 	state={
-		operate:"Create",
+		operate:"create",
 		title:"New Persona",
 		info:{
 			name:"",
@@ -49,7 +50,15 @@ class PersonaForm extends Component{
 			elementals:[this.state.elementals],
 			skills:skills
 		}
-		PersonasModel.add(data)
+		if (this.state.operate==="create"){
+			PersonasModel.add(data)
+			alert(`You have registered ${data.name}!`)
+		}
+		else if(this.state.operate==="edit"){	
+			let name=this.state.title
+			PersonasModel.update(name,data)
+			alert(`You have updated ${name}!`)
+		}
 	}
 
 	componentDidMount(){
@@ -144,13 +153,10 @@ class PersonaForm extends Component{
 							{elementalsInput}
 						</div>
 						<div>
-							{/* <select> */}
-							{/* 	{skillsOptions} */}
-							{/* </select> */}
 							{skillsInput}
 						</div>
 					</div>
-					<button type="submit">Submit</button>
+						<button type="submit">Submit</button>
 				</form>
 			</div>
 		)

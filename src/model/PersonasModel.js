@@ -19,7 +19,27 @@ class PersonasModel{
       method:"POST",
       body: JSON.stringify(data)
 		})
-		.catch(error=>console.log("Failed to post data"))
+		.catch(error=>console.log("Failed to post data",error))
+	}
+	static update=(name,data)=>{
+		return fetch(endPoint+"/"+name,{
+			headers:{
+        'Content-Type':'application/json'
+      },
+      method:"PUT",
+      body: JSON.stringify(data)
+		})
+		.catch(error=>console.log("Failed to update data",error))
+	}
+	static delete=(name,callback)=>{
+		fetch(endPoint+"/"+name,{
+			headers:{
+        'Content-Type':'application/json'
+      },
+      method:"DELETE",
+		})
+		.catch(error=>console.log("Failed to delete data"))
+		callback()
 	}
 	static getSkills=(data)=>{
 		return fetch('http://localhost:9000/api/skills')
