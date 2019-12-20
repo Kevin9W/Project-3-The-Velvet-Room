@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import {Redirect} from 'react-router-dom'
 import PersonasModel from '../model/PersonasModel'
 
 class PersonaForm extends Component{
@@ -29,7 +30,8 @@ class PersonaForm extends Component{
 			bless:"",
 		},
 		skills:["","","","","","","",""],
-		skillsData:""
+		skillsData:"",
+		redirect:false,
 	}
 
 	fetchSkills=()=>{
@@ -51,11 +53,13 @@ class PersonaForm extends Component{
 		}
 		if (this.state.operate==="register"){
 			PersonasModel.add(data)
+				.then(()=>this.setState({redirect:true}))
 			alert(`You have registered ${data.name}!`)
 		}
 		else if(this.state.operate==="edit"){	
 			let name=this.state.title
 			PersonasModel.update(name,data)
+				.then(()=>this.setState({redirect:true}))
 			alert(`You have updated ${name}!`)
 		}
 	}
@@ -102,16 +106,33 @@ class PersonaForm extends Component{
 			return string.charAt(0).toUpperCase()+string.slice(1)
 		}
 	render(){
+		if (this.state.redirect){
+			return <Redirect to='/personas'/>
+		}
 		let statsInput=Object.entries(this.state.stats).map(([key,value])=>({key,value})).map((stat,index)=>{
 			return <>
 				<label key={index+"a"} style={{display:"block"}}>{this.capitalize(stat.key)}</label>
-				<input key={index+"b"} type="number" className="stat" name={stat.key} placeholder={this.capitalize(stat.key)} defaultValue={stat.value} onChange={this.handleChangeStats}></input>
+				<input key={index+"b"} 
+							 type="number" 
+							 className="stat" 
+							 name={stat.key} 
+							 placeholder={this.capitalize(stat.key)} 
+							 defaultValue={stat.value} 
+							 onChange={this.handleChangeStats}>
+				</input>
 			</>
 		})
 		let elementalsInput=Object.entries(this.state.elementals).map(([key,value])=>({key,value})).map((element,index)=>{
 			return <>
 				<label key={index+"c"} style={{display:"block"}}>{this.capitalize(element.key)}</label>
-				<input key={index+"d"} type="text" className="elemental" name={element.key} placeholder={this.capitalize(element.key)} defaultValue={element.value} onChange={this.handleChangeElementals}></input>
+				<input key={index+"d"} 
+							 type="text" 
+							 className="elemental" 
+							 name={element.key} 
+							 placeholder={this.capitalize(element.key)} 
+							 defaultValue={element.value} 
+							 onChange={this.handleChangeElementals}>							 	
+				</input>
 			</>
 		})
 		let skillsOptions
@@ -142,11 +163,23 @@ class PersonaForm extends Component{
 					<div className="basic_info">
 						<>
 							<label style={{display:"block"}}>Name</label>
-							<input type="text" className="name" name="name" placeholder="Name" defaultValue={this.state.info.name} onChange={this.handleChangeInfo}></input>
+							<input type="text" 
+										 className="name" 
+										 name="name" 
+										 placeholder="Name" 
+										 defaultValue={this.state.info.name} 
+										 onChange={this.handleChangeInfo}>
+							</input>
 						</>
 						<>
 							<label style={{display:"block"}}>Arcana</label>
-							<input type="text" className="arcana" name="arcana" placeholder="Arcana" defaultValue={this.state.info.arcana} onChange={this.handleChangeInfo}></input>
+							<input type="text" 
+										 className="arcana" 
+										 name="arcana" 
+										 placeholder="Arcana" 
+										 defaultValue={this.state.info.arcana} 
+										 onChange={this.handleChangeInfo}>										 	
+							</input>
 						</>
 					</div>
 					<div style={{display:"flex"}}>
