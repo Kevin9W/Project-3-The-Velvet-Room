@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
-import Personas from '../components/Personas'
-import PersonaInfo from '../components/PersonaInfo'
+import {Link} from 'react-router-dom'
+import Persona from '../components/Persona'
 import PersonasModel from '../model/PersonasModel'
-import {Route,Switch} from 'react-router-dom'
 
 class PersonasContainer extends Component{
 	state={
-		personas:null,
-		onePersona:null,
-		name:"",
+		data:null,
 	}
 	
 	componentDidMount(){
@@ -17,39 +14,30 @@ class PersonasContainer extends Component{
 
 	fetchData=()=>{
 		PersonasModel.all()
-			.then(personas=>{
-				this.setState({personas})
-		})
-	}
-	getInfo=()=>{
-		PersonasModel.getOne(this.state.name)
-			.then(onePersona=>{
-				this.setState({onePersona})
-			})
-	}
-	changeName=(name,callback)=>{
-		this.setState({name},()=>{
-			this.getInfo()
+			.then(data=>{
+				this.setState({data})
 		})
 	}
 
 	render(){
-		let oneLink="/personas/"+this.state.name
+		let personaList
+		if (this.state.data){
+			personaList = this.state.data.personas.map((data,index)=>{
+				return <Persona data={data} changeName={this.props.changeName} key={index}/>
+			})
+		}
+		else personaList="Loading..."
 		return(
 			<>
+				<Link to="/personas/create">
+					<button>
+					Register a new persona
+					</button>
+				</Link>
 				{/* <form>				 */}
 				{/* 	<input type="text" onChange={this.changeName}></input> */}
 				{/* </form> */}
-				{/* {this.state.personas? */}
-				<Switch>
-					<Route exact path='/personas' 
-								 render={props=><Personas{...props} data={this.state.personas} getInfo={this.getInfo} changeName={this.changeName}/>}
-								/>
-					<Route path={oneLink}
-								 render={props=><PersonaInfo{...props} data={this.state.onePersona}/>}
-								/>
-				</Switch>
-				{/* :"Loading..."} */}
+				{personaList}
 			</>
 		)
 	}
