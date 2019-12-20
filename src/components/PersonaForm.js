@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-import {Link} from 'react-router-dom'
 import PersonasModel from '../model/PersonasModel'
 
 class PersonaForm extends Component{
@@ -117,14 +116,18 @@ class PersonaForm extends Component{
 		})
 		let skillsOptions
 		let skillsInput=[]
-		if (this.state.skillsData){
+		if (this.state.skillsData&&this.state.skills){
 			skillsOptions=this.state.skillsData.skills.map((skill,index)=>{
-				return <option name={skill.name} key={index}>{skill.name}: {skill.type} </option>
+				return <option value={skill.name} key={index+"e"}>{skill.name}: {skill.type} </option>
 			})
 			skillsOptions.unshift(<option>:</option>)
 			for(let i=0;i<8;i++){
+				let skillValue=""
+				if (this.state.skills[i]){
+					skillValue=this.state.skills[i].name
+				}
 				skillsInput.push(
-					<select type="dropdown" key={i} className="skill" onChange={this.handleChangeSkills}>
+					<select type="dropdown" key={i} className="skill" value={skillValue} onChange={this.handleChangeSkills}>
 						{i}
 						{skillsOptions}
 					</select>)
@@ -153,6 +156,7 @@ class PersonaForm extends Component{
 							{elementalsInput}
 						</div>
 						<div>
+							<p>Skills</p>
 							{skillsInput}
 						</div>
 					</div>
