@@ -1,11 +1,11 @@
 # Project 3 - The Velvet Room
 
 ## Table of Contents
-*Summary
-*Wireframe
-*Documentation
-*Technologies Used
-*Next Steps
+* Summary
+* Wireframe
+* Documentation
+* Technologies Used
+* Next Steps
 
 ## Summary
 This frontend uses React to render data from the api located in the link below. The frontend will allow the user to browse the infromation for Personas and Skills. 
@@ -38,5 +38,5 @@ $npm start
 React | React Router Dom
 
 ## Next Steps
-*Skills Routes
-*More Styling
+* Skills Routes
+* More Styling
