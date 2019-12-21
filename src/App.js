@@ -3,12 +3,13 @@ import {Link, Route, Switch} from 'react-router-dom'
 import Home from './components/Home'
 import PersonasModel from './model/PersonasModel'
 import PersonasContainer from './containers/PersonasContainer'
-import PersonaInfo from './components/PersonaInfo'
+import PersonaInfoLanding from './components/PersonaInfoLanding'
 import PersonaForm from './components/PersonaForm'
 import styles from './App.module.css'
 
 class App extends Component{
   state={
+    names:[],
     data:null,
     editData:null,
   }
@@ -18,13 +19,14 @@ class App extends Component{
 
   componentDidMount(){
     this.fetchData()
+      
   }
 
   fetchData=()=>{
     PersonasModel.all()
-      .then(data=>{
-        this.setState({data})
-    })
+      .then(data=>{this.setState({data})})
+      .then(()=>{let names=this.state.data.personas.map(persona=>{return persona.name})
+        this.setState({names})})
   }
   render(){
     return(
@@ -46,8 +48,7 @@ class App extends Component{
                   />
             <Route exact path="/personas/register" component={PersonaForm}/>
             <Route exact path="/personas/:name" 
-                   render={props=><PersonaInfo{...props} editContent={this.editContent} fetchData={this.fetchData}/>}
-
+                   render={props=><PersonaInfoLanding{...props} names={this.state.names} editContent={this.editContent} fetchData={this.fetchData}/>}
                   />
             <Route exact path="/personas/:name/:operate" 
                    render={props=><PersonaForm{...props} data={this.state.editData}/>}
