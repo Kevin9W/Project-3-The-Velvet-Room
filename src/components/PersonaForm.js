@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {Redirect} from 'react-router-dom'
 import PersonasModel from '../model/PersonasModel'
-import styles from './PersonaForm.module.css'
+import styles from '../css/PersonaForm.module.css'
 class PersonaForm extends Component{
 	state={
 		operate:"register",

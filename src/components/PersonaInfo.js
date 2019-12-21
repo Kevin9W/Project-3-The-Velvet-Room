@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link,Redirect} from 'react-router-dom'
 import PersonasModel from '../model/PersonasModel'
-import styles from './PersonaInfo.module.css'
+import styles from '../css/PersonaInfo.module.css'
 
 class PersonaInfo extends Component{
 	state={

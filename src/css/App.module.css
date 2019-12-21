@@ -3,7 +3,7 @@ html{
 	background-color:#000000;
 }
 .App{
-	background:url(./images/VelvetRoom.jpg);
+	background:url(../images/VelvetRoom.jpg);
 	background-position:center center;
 	background-size:cover;
 	height:675px;

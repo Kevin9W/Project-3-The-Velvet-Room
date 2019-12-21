@@ -5,7 +5,7 @@ import PersonasModel from './model/PersonasModel'
 import PersonasContainer from './containers/PersonasContainer'
 import PersonaInfoLanding from './components/PersonaInfoLanding'
 import PersonaForm from './components/PersonaForm'
-import styles from './App.module.css'
+import styles from './css/App.module.css'
 
 class App extends Component{
   state={
