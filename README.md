@@ -14,6 +14,9 @@ This frontend uses React to render data from the api located in the link below. 
 
 ## Wireframe
 
+![wireframe](/wireframe.png "Velvet Room Wireframe")
+
+
 ## Documentation
 
 *"Assuming you are using Unix based OS"*
