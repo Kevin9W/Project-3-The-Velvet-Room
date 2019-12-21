@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom'
+import {Link,Redirect} from 'react-router-dom'
 import PersonasModel from '../model/PersonasModel'
 import styles from './PersonaInfo.module.css'
 
 class PersonaInfo extends Component{
 	state={
 		data:null,
+		redirect:false,
 	}
 	getInfo=(name)=>{
 		PersonasModel.getOne(name)
@@ -20,11 +21,18 @@ class PersonaInfo extends Component{
 	editContentInfo=()=>{
 		this.props.editContent(this.state.data)
 	}
+	handleDelete=()=>{
+		PersonasModel.deletePersona(this.state.data.name)
+		alert("Deleted "+this.state.data.name)
+		this.props.fetchData()
+		this.setState({redirect:true})
+	}
 	render(){
 		let stats
 		let elements
 		let skills
 		let editLink
+		if (this.state.redirect){return <Redirect to='/personas'/>}
 		function capitalize(string){
 			return string.charAt(0).toUpperCase()+string.slice(1)
 		}
@@ -52,6 +60,9 @@ class PersonaInfo extends Component{
 								Edit
 							</button>
 						</Link>
+						<button onClick={this.handleDelete}>
+							Delete
+						</button>
 					</div>
 					<div className={styles.items}>
 						<p className={styles.item}>Stats</p>

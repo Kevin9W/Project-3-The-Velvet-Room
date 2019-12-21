@@ -10,7 +10,7 @@ class Persona extends Component{
 	handleDelete=()=>{
 		PersonasModel.deletePersona(this.props.data.name)
 		alert("Deleted "+this.props.data.name)
-		this.props.updateData()
+		this.props.fetchData()
 	}
 	handleMoreInfo=()=>{
 		this.setState({redirect:true})
@@ -22,17 +22,17 @@ class Persona extends Component{
 			<div 
 				style={{
 					background:"rgba(0, 0, 0, 0.50)",
-					"text-align":"center",
+					textAlign:"center",
 					margin:"10px",
-					"border-radius":"10px",
+					borderRadius:"10px",
 					padding:"10px",
 				}}
 				>
 				<h3>{this.props.data.name}</h3>
 				<h4>{this.props.data.arcana}</h4>
-					<button onClick={this.handleMoreInfo}>
-						More Info
-					</button>
+				<button onClick={this.handleMoreInfo}>
+					More Info
+				</button>
 				<button onClick={this.handleDelete}>
 					Delete
 				</button>

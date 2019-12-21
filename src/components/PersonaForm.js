@@ -29,7 +29,7 @@ class PersonaForm extends Component{
 			curse:"",
 			bless:"",
 		},
-		skills:["","","","","","","",""],
+		skills:[{name:""},{name:""},{name:""},{name:""},{name:""},{name:""},{name:""},{name:""}],
 		skillsData:"",
 		redirect:false,
 	}
@@ -43,7 +43,7 @@ class PersonaForm extends Component{
 
 	handleSubmit=(event)=>{
 		event.preventDefault()
-		let skills=this.state.skills.filter(skill=>skill!=="")
+		let skills=this.state.skills.filter(skill=>skill.name!=="")
 		let data={
 			name:this.state.info.name!=="" ? this.state.info.name : "unnamed",
 			arcana:this.state.info.arcana,
@@ -70,6 +70,7 @@ class PersonaForm extends Component{
 		if (operate){
 			this.setState({operate})
 		}
+
 		if (this.props.data){
 			this.setState({title:this.props.data.name})
 			this.setState(
@@ -95,11 +96,9 @@ class PersonaForm extends Component{
 	handleChangeSkills=(event)=>{
 		let index=event.target.textContent.split(":")[0]
 		let skill=event.target.value.split(":")[0]
-		if (skill!==""){
-			let skillArr=this.state.skills
-			skillArr[index]={name:skill}
-			this.setState({skills:skillArr})
-		}
+		let skillArr=this.state.skills
+		skillArr[index]={name:skill}
+		this.setState({skills:skillArr})
 	}
 
 	capitalize=(string)=>{
@@ -141,7 +140,6 @@ class PersonaForm extends Component{
 			skillsOptions=this.state.skillsData.skills.map((skill,index)=>{
 				return <option value={skill.name} key={index+"e"}>{skill.name}: {skill.type} </option>
 			})
-			skillsOptions.unshift(<option>:</option>)
 			for(let i=0;i<8;i++){
 				let skillValue=""
 				if (this.state.skills[i]){
@@ -151,6 +149,7 @@ class PersonaForm extends Component{
 					<select type="dropdown" key={i} className="skill" value={skillValue} onChange={this.handleChangeSkills}
 						style={{display:"block"}}>
 						{i}
+						<option value="">:</option>
 						{skillsOptions}
 					</select>)
 			}

@@ -4,21 +4,15 @@ import Persona from '../components/Persona'
 import styles from './PersonasContainer.module.css'
 
 class PersonasContainer extends Component{
-	state={
-		data:null,
-	}
-	
 	componentDidMount(){
-		this.setState(this.props.data,()=>{
-			return this.props.fetchData()
-		})
+			this.props.fetchData()
 	}
 
 	render(){
 		let personaList
-		if (this.state.data){
-			personaList = this.state.data.personas.map((data,index)=>{
-				return <Persona data={data} key={index}/>
+		if (this.props.data){
+			personaList = this.props.data.personas.map((data,index)=>{
+				return <Persona data={data} fetchData={this.props.fetchData} key={index}/>
 			})
 		}
 		else personaList="Loading..."

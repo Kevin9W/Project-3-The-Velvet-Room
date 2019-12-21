@@ -34,9 +34,6 @@ class PersonasModel{
 	}
 	static deletePersona=(name)=>{
 		fetch(endPoint+"/"+name,{
-			headers:{
-        'Content-Type':'application/json'
-      },
       method:"DELETE",
 		})
 		.catch(error=>console.log("Failed to delete data"))

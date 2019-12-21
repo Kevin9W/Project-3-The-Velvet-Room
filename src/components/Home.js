@@ -6,7 +6,7 @@ class Home extends Component{
 			<div 
 				className="home"
 				style={{
-					"text-align":"center",
+					"textAlign":"center",
 						background:"rgba(0, 0, 0, 0.50)",
 				}}
 				>

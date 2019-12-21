@@ -46,7 +46,7 @@ class App extends Component{
                   />
             <Route exact path="/personas/register" component={PersonaForm}/>
             <Route exact path="/personas/:name" 
-                   render={props=><PersonaInfo{...props} editContent={this.editContent}/>}
+                   render={props=><PersonaInfo{...props} editContent={this.editContent} fetchData={this.fetchData}/>}
 
                   />
             <Route exact path="/personas/:name/:operate" 
