@@ -6,10 +6,11 @@ class Persona extends Component{
 	state={
 		redirect:false,
 	}
+
 	handleDelete=()=>{
 		PersonasModel.deletePersona(this.props.data.name)
 		alert("Deleted "+this.props.data.name)
-		this.props.fetchData()
+		this.props.updateData()
 	}
 	handleMoreInfo=()=>{
 		this.setState({redirect:true})

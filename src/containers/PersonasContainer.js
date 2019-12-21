@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 import Persona from '../components/Persona'
-import PersonasModel from '../model/PersonasModel'
 import styles from './PersonasContainer.module.css'
 
 class PersonasContainer extends Component{
@@ -10,13 +9,8 @@ class PersonasContainer extends Component{
 	}
 	
 	componentDidMount(){
-		this.fetchData()
-	}
-
-	fetchData=()=>{
-		PersonasModel.all()
-			.then(data=>{
-				this.setState({data})
+		this.setState(this.props.data,()=>{
+			return this.props.fetchData()
 		})
 	}
 
