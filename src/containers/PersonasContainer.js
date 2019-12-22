@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 import Persona from '../components/Persona'
-import styles from './PersonasContainer.module.css'
+import styles from '../css/PersonasContainer.module.css'
 
 class PersonasContainer extends Component{
 	componentDidMount(){

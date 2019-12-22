@@ -18,8 +18,7 @@ class Persona extends Component{
 					margin:"10px",
 					borderRadius:"10px",
 					padding:"10px",
-				}}
-				>
+				}}>
 				<h3>{this.props.data.name}</h3>
 				<h4>{this.props.data.arcana}</h4>
 				<Link to={link}>

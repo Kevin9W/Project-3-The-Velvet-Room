@@ -5,6 +5,7 @@ import PersonasModel from './model/PersonasModel'
 import PersonasContainer from './containers/PersonasContainer'
 import PersonaInfoLanding from './components/PersonaInfoLanding'
 import PersonaForm from './components/PersonaForm'
+import SkillsContainer from './containers/SkillsContainer'
 import styles from './css/App.module.css'
 
 class App extends Component{
@@ -25,8 +26,10 @@ class App extends Component{
   fetchData=()=>{
     PersonasModel.all()
       .then(data=>{this.setState({data})})
-      .then(()=>{let names=this.state.data.personas.map(persona=>{return persona.name})
-        this.setState({names})})
+      .then(()=>{
+        let names=this.state.data.personas.map(persona=>{
+          return persona.name})
+          this.setState({names})})
   }
   render(){
     return(
@@ -53,6 +56,7 @@ class App extends Component{
             <Route exact path="/personas/:name/:operate" 
                    render={props=><PersonaForm{...props} data={this.state.editData}/>}
                   />
+            <Route path="/skills" component={SkillsContainer}/>
           </Switch>
         </div>
       </div>

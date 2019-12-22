@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {Redirect} from 'react-router-dom'
 import PersonasModel from '../model/PersonasModel'
+import SkillsModel from '../model/SkillsModel'
 import styles from '../css/PersonaForm.module.css'
 class PersonaForm extends Component{
 	state={
@@ -35,7 +36,7 @@ class PersonaForm extends Component{
 	}
 
 	fetchSkills=()=>{
-		PersonasModel.getSkills()
+		SkillsModel.all()
 			.then((skillsData)=>{
 				this.setState({skillsData})
 			})

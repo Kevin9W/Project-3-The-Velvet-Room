@@ -38,11 +38,6 @@ class PersonasModel{
 		})
 		.catch(error=>console.log("Failed to delete data"))
 	}
-	static getSkills=(data)=>{
-		return fetch('http://localhost:9000/api/skills')
-			.then(response=>response.json())
-			.catch(error=>console.log("Failed to fetch data",error))
-	}
 }
 
 
