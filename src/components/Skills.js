@@ -36,7 +36,7 @@ class Skills extends Component{
 		default:
 			console.log("invalid")
 		}
-		this.setState({index},()=>{return this.disableButtons(end)})
+		this.setState({index},()=>{this.disableButtons(end)})
 	}
 	disableButtons=(end)=>{
 			if(this.state.index===0){
@@ -54,7 +54,7 @@ class Skills extends Component{
 		let skillsEnd
 		if (this.props.data){
 			let skillsArr=this.props.data.skills.map((skill,index)=>{
-				return <Skill key={index} data={skill}/>
+				return <Skill key={index} data={skill} fetchData={this.props.fetchData}/>
 			})
 			skills=this.sliceArray(skillsArr)
 			skillsEnd=skills.length-1
@@ -65,8 +65,9 @@ class Skills extends Component{
 					textAlign:'center',
 					background:'rgba(0, 0, 0, 0.50)'
 				}}>
-					<h1>Skills</h1>
-					<p>Page {this.state.index+1} of {skillsEnd+1}</p>
+					<h1 style={{margin:"20px 0px 0px 0px"}}>Skills</h1>
+					<button style={{margin:"0px"}}>Add New Skill</button>
+					<p style={{margin:"10px"}}>Page {this.state.index+1} of {skillsEnd+1}</p>
 					<nav>
 						<button disabled={this.state.disable_back} onClick={()=>this.moveIndex('start',skillsEnd)}> Start </button>						
 						<button disabled={this.state.disable_back} onClick={()=>this.moveIndex('back',skillsEnd)}> Back </button>

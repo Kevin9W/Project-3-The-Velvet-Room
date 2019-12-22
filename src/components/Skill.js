@@ -1,20 +1,21 @@
 import React, {Component} from 'react'
+import SkillForm from './SkillForm'
 
 class Skill extends Component{
 	state={
 		display:"none",
-		info:"More"
+		edit:"Edit"
 	}
 	handelInfo=()=>{
 		switch (this.state.display){
 		case 'none':
-			this.setState({display:"block",info:"Less"})
+			this.setState({display:"block",edit:"Cancel"})
 			break
 		case "block":
-			this.setState({display:"none",info:"More"})
+			this.setState({display:"none",edit:"Edit"})
 			break
 		default:
-			this.setState({display:"none",info:"More"})
+			console.log("invalid")
 		}
 	}
 	render(){
@@ -24,18 +25,19 @@ class Skill extends Component{
 			<div style={{
 					background:"rgba(0, 0, 0, 0.50)",
 					margin:"5px",
+					padding:"5px",
 					borderRadius:"10px",
 				}}>
-				<p style={{display:"inline-block"}}>{skill.name}: {skill.type}</p>
-				<button onClick={this.handelInfo}>
-					{this.state.info} Info
-				</button>	
+				<p style={{display:"inline-block"}}>{skill.name} || {skill.type} || {skill.effect} || {skill.cost}{skill.cost_type}</p>
 				<div style={{
-						display:`${divDisplay}`
+						display:`${divDisplay}`,
+						margin:"0px"
 						}}>
-						<p>{skill.effect}</p>
-						<p>{skill.cost}{skill.cost_type}</p>
-					</div>
+						<SkillForm data={this.props.data} fetchData={this.fetchData}/>
+				</div>
+				<button onClick={this.handelInfo}>
+					{this.state.edit}
+				</button>		
 			</div>
 		)
 	}
