@@ -1,17 +1,25 @@
 import React, {Component} from 'react'
 import SkillForm from './SkillForm'
+import styles from '../css/Skill.module.css'
+import SkillsModel from '../model/SkillsModel'
 
 class Skill extends Component{
 	state={
 		display:"none",
 		edit:"Edit"
 	}
-	handelInfo=()=>{
+	handleDelete=()=>{
+		if (window.confirm(`Are you sure you want delete ${this.props.data.name}?`)){
+			SkillsModel.delete(this.props.data.name)
+			this.props.fetchData()
+		}
+	}
+	handleInfo=()=>{
 		switch (this.state.display){
 		case 'none':
-			this.setState({display:"block",edit:"Cancel"})
+			this.setState({display:"inline-block",edit:"Cancel"})
 			break
-		case "block":
+		case "inline-block":
 			this.setState({display:"none",edit:"Edit"})
 			break
 		default:
@@ -22,22 +30,22 @@ class Skill extends Component{
 		let skill=this.props.data
 		let divDisplay=this.state.display
 		return(
-			<div style={{
-					background:"rgba(0, 0, 0, 0.50)",
-					margin:"5px",
-					padding:"5px",
-					borderRadius:"10px",
-				}}>
-				<p style={{display:"inline-block"}}>{skill.name} || {skill.type} || {skill.effect} || {skill.cost}{skill.cost_type}</p>
-				<div style={{
-						display:`${divDisplay}`,
-						margin:"0px"
-						}}>
-						<SkillForm data={this.props.data} fetchData={this.fetchData}/>
+			<div className={styles.grid}>
+				<div className={styles.skill}>
+					<p style={{color:"#d40203"}}>{skill.name} - {skill.type}</p>
+					<p>{skill.effect} - Cost {skill.cost}{skill.cost_type}</p>
+					<div className={styles.form} style={{display:`${divDisplay}`}}>
+						<SkillForm data={this.props.data} fetchData={this.props.fetchData} handleInfo={this.handleInfo} type="edit"/>
+					</div>
 				</div>
-				<button onClick={this.handelInfo}>
-					{this.state.edit}
-				</button>		
+				<div className={styles.button}>
+					<button onClick={this.handleInfo}>
+						{this.state.edit}
+					</button>
+					<button onClick={this.handleDelete}>
+						Delete
+					</button>
+				</div>	
 			</div>
 		)
 	}

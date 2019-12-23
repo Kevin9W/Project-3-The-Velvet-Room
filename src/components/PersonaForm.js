@@ -64,27 +64,6 @@ class PersonaForm extends Component{
 			alert(`You have updated ${name}!`)
 		}
 	}
-
-	componentDidMount(){
-		this.fetchSkills()
-		let{operate}=this.props.match.params
-		if (operate){
-			this.setState({operate})
-		}
-
-		if (this.props.data){
-			this.setState({title:this.props.data.name})
-			this.setState(
-				{info:{...this.state.info,
-					name:this.props.data.name,
-					arcana:this.props.data.arcana,
-				}})
-			this.setState({stats:this.props.data.stats[0]})
-			this.setState({elementals:this.props.data.elementals[0]})
-			this.setState({skills:this.props.data.skills})
-	
-		}
-	}
 	handleChangeInfo=(event)=>{
 		this.setState({info:{...this.state.info,[event.target.name]:event.target.value}})
 	}
@@ -105,6 +84,26 @@ class PersonaForm extends Component{
 	capitalize=(string)=>{
 			return string.charAt(0).toUpperCase()+string.slice(1)
 		}
+	componentDidMount(){
+		this.fetchSkills()
+		let{operate}=this.props.match.params
+		if (operate){
+			this.setState({operate})
+		}
+
+		if (this.props.data){
+			this.setState({title:this.props.data.name})
+			this.setState(
+				{info:{...this.state.info,
+					name:this.props.data.name,
+					arcana:this.props.data.arcana,
+				}})
+			this.setState({stats:this.props.data.stats[0]})
+			this.setState({elementals:this.props.data.elementals[0]})
+			this.setState({skills:this.props.data.skills})
+	
+		}
+	}
 	render(){
 		if (this.state.redirect){
 			return <Redirect to='/personas'/>

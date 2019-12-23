@@ -5,7 +5,7 @@ import PersonasModel from './model/PersonasModel'
 import PersonasContainer from './containers/PersonasContainer'
 import PersonaInfoLanding from './components/PersonaInfoLanding'
 import PersonaForm from './components/PersonaForm'
-import SkillsContainer from './containers/SkillsContainer'
+import Skills from './components/Skills'
 import styles from './css/App.module.css'
 
 class App extends Component{
@@ -56,7 +56,7 @@ class App extends Component{
             <Route exact path="/personas/:name/:operate" 
                    render={props=><PersonaForm{...props} data={this.state.editData}/>}
                   />
-            <Route path="/skills" component={SkillsContainer}/>
+            <Route path="/skills" component={Skills}/>
           </Switch>
         </div>
       </div>

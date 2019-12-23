@@ -1,10 +1,15 @@
 .flex{
 	display:flex;
+	justify-content:center;
 	flex-wrap:wrap;
 }
 .items{
 	display:inline-block;
 	margin:5px;
+}
+.submit{
+	display:inline-block;
+	margin:10px 0px auto 0px;
 }
 .label{
 	display:block;
