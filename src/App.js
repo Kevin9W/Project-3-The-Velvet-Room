@@ -25,8 +25,7 @@ class App extends Component{
 
   fetchData=()=>{
     PersonasModel.all()
-      .then(data=>{this.setState({data})})
-      .then(()=>{
+      .then(data=>{this.setState({data})},()=>{
         let names=this.state.data.personas.map(persona=>{
           return persona.name})
           this.setState({names})})
