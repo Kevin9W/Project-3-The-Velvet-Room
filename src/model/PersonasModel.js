@@ -40,5 +40,4 @@ class PersonasModel{
 	}
 }
 
-
 export default PersonasModel

@@ -30,7 +30,7 @@ class SkillForm extends Component{
 			}
 			SkillsModel.add(this.state)
 			alert(`You have added ${this.state.name}!`)
-			this.setState(initial,()=>console.log("reseting"))	
+			this.setState(initial)	
 		}
 		this.props.fetchData()
 		this.props.handleInfo()

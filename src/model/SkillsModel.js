@@ -38,4 +38,5 @@ class SkillsModel{
 		.catch(error=>console.log("Failed to delete data"))
 	}
 }
+
 export default SkillsModel
