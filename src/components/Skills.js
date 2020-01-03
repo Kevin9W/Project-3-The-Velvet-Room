@@ -19,7 +19,6 @@ class Skills extends Component{
 	fetchData=()=>{
 		SkillsModel.all()
 			.then(data=>this.setState({data}))
-			.then(()=>console.log("updating data"))
 	}
 	componentDidMount(){
 			this.fetchData()
@@ -27,7 +26,6 @@ class Skills extends Component{
 	componentDidUpdate(prevProps,prevState){
 		if (this.state.dataUpdate !== prevState.dataUpdate){
 			this.fetchData()
-			console.log("testing for infinite")
 		}
 	}
 	handleCreate=()=>{
