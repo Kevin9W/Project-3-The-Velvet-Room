@@ -5,6 +5,7 @@ import SkillsModel from '../model/SkillsModel'
 
 class Skills extends Component{
 	state={
+		dataUpdate:false,
 		data:null,
 		index:0,
 		disable_back:true,
@@ -12,14 +13,22 @@ class Skills extends Component{
 		display:"none",
 		create:"Add New Skill",
 	}
+	updateData=()=>{
+		this.setState({dataUpdate:!this.state.dataUpdate})
+	}
 	fetchData=()=>{
 		SkillsModel.all()
 			.then(data=>this.setState({data}))
 			.then(()=>console.log("updating data"))
-
 	}
 	componentDidMount(){
 			this.fetchData()
+	}
+	componentDidUpdate(prevProps,prevState){
+		if (this.state.dataUpdate !== prevState.dataUpdate){
+			this.fetchData()
+			console.log("testing for infinite")
+		}
 	}
 	handleCreate=()=>{
 		switch (this.state.display){
@@ -81,7 +90,7 @@ class Skills extends Component{
 		let divDisplay=this.state.display
 		if (this.state.data){
 			let skillsArr=this.state.data.skills.map((skill,index)=>{
-				return <Skill key={index} data={skill} fetchData={this.fetchData}/>
+				return <Skill key={index} data={skill} fetchData={this.fetchData} updateData={this.updateData}/>
 			})
 			skills=this.sliceArray(skillsArr)
 			skillsEnd=skills.length-1
@@ -107,7 +116,7 @@ class Skills extends Component{
 							justifyContent:"center",
 							margin:"0px"
 							}}>
-							<SkillForm data={this.state.data} fetchData={this.fetchData} handleInfo={this.handleCreate} type="add"/>
+							<SkillForm data={this.state.data} updateData={this.updateData} handleInfo={this.handleCreate} type="add"/>
 						</div>
 					</div>
 					<div>

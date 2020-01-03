@@ -32,7 +32,7 @@ class SkillForm extends Component{
 			alert(`You have added ${this.state.name}!`)
 			this.setState(initial)	
 		}
-		this.props.fetchData()
+		this.props.updateData()
 		this.props.handleInfo()
 	}
 	componentDidMount(){

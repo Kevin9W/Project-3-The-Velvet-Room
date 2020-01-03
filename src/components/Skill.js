@@ -11,7 +11,7 @@ class Skill extends Component{
 	handleDelete=()=>{
 		if (window.confirm(`Are you sure you want delete ${this.props.data.name}?`)){
 			SkillsModel.delete(this.props.data.name)
-			this.props.fetchData()
+			this.props.updateData()
 		}
 	}
 	handleInfo=()=>{
@@ -35,7 +35,7 @@ class Skill extends Component{
 					<p style={{color:"#d40203"}}>{skill.name} - {skill.type}</p>
 					<p>{skill.effect} - Cost {skill.cost}{skill.cost_type}</p>
 					<div className={styles.form} style={{display:`${divDisplay}`}}>
-						<SkillForm data={this.props.data} fetchData={this.props.fetchData} handleInfo={this.handleInfo} type="edit"/>
+						<SkillForm data={this.props.data} updateData={this.props.updateData} handleInfo={this.handleInfo} type="edit"/>
 					</div>
 				</div>
 				<div className={styles.button}>
