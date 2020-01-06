@@ -7,7 +7,7 @@ class SkillForm extends Component{
 		name:"",
 		type:"",
 		effect:"",
-		cost:null,
+		cost:"",
 		cost_type:"",
 	}
 	handleChange=(event)=>{
@@ -25,7 +25,7 @@ class SkillForm extends Component{
 				name:"",
 				type:"",
 				effect:"",
-				cost:null,
+				cost:"",
 				cost_type:"",
 			}
 			SkillsModel.add(this.state)
@@ -42,7 +42,7 @@ class SkillForm extends Component{
 				name:skill.name,
 				type:skill.type,
 				effect:skill.effect,
-				cost:skill.cost,
+				cost:(skill.cost===null?"":skill.cost),
 				cost_type:(skill.cost_type===null?"":skill.cost_type),
 			})
 		}
@@ -53,15 +53,15 @@ class SkillForm extends Component{
 				<div className={styles.flex}>
 					<div className={styles.items}>
 						<label className={styles.label}>Name</label>
-						<input type="text" name="name" onChange={this.handleChange} value={this.state.name} required></input>
+						<input type="text" name="name" value={this.state.name} onChange={this.handleChange} required></input>
 					</div>
 					<div className={styles.items}>
 						<label className={styles.label}>Type</label>
-						<input type="text" name="type" onChange={this.handleChange} value={this.state.type}></input>
+						<input type="text" name="type" value={this.state.type} onChange={this.handleChange}></input>
 					</div>
 					<div className={styles.items}>
 						<label className={styles.label}>Cost</label>
-						<input type="number" name="cost" onChange={this.handleChange} value={this.state.cost}></input>
+						<input type="number" name="cost" value={this.state.cost} onChange={this.handleChange}></input>
 					</div>
 					<div className={styles.items}>
 						<label className={styles.label}>Cost Type</label>

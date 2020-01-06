@@ -7,6 +7,7 @@ function PersonaInfoLanding(props){
 	let result=<h1 style={{
 										background:"rgba(0, 0, 0, 0.50)",
 										borderRadius:"10px",
+										textAlign:"center",
 										padding:"10px",
 									}}>404</h1>
 	if (props.names){

@@ -77,10 +77,8 @@ class Skills extends Component{
 			}
 			else if(this.state.index===end){
 				this.setState({disable_back:false,disable_next:true})
-
 			}
 			else this.setState({disable_back:false,disable_next:false})
-
 	}
 	render(){
 		let skills

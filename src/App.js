@@ -20,15 +20,15 @@ class App extends Component{
 
   componentDidMount(){
     this.fetchData()
-      
   }
 
   fetchData=()=>{
     PersonasModel.all()
-      .then(data=>{this.setState({data})},()=>{
-        let names=this.state.data.personas.map(persona=>{
-          return persona.name})
-          this.setState({names})})
+      .then(data=>{this.setState({data})})
+      .then((res)=>{
+      let names=this.state.data.personas.map(persona=>{return persona.name})
+      this.setState({names})
+    })
   }
   render(){
     return(
