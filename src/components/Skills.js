@@ -99,7 +99,6 @@ class Skills extends Component{
 						background:'rgba(0, 0, 0, 0.50)'
 					}}>
 						<h1 style={{margin:"20px 0px 0px 0px"}}>Skills</h1>
-						<button style={{margin:"0px"}} onClick={this.handleCreate}>{this.state.create}</button>
 						<p style={{margin:"10px"}}>Page {this.state.index+1} of {skillsEnd+1}</p>
 						<nav>
 							<button disabled={this.state.disable_back} onClick={()=>this.moveIndex('start',skillsEnd)}> Start </button>						
@@ -107,6 +106,7 @@ class Skills extends Component{
 							<button disabled={this.state.disable_next} onClick={()=>this.moveIndex('next',skillsEnd)}> Next </button>						
 							<button disabled={this.state.disable_next} onClick={()=>this.moveIndex('end',skillsEnd)}> End </button>
 						</nav>
+						<button style={{margin:"0px"}} onClick={this.handleCreate}>{this.state.create}</button>
 						<div style={{
 							display:`${divDisplay}`,
 							justifyContent:"center",

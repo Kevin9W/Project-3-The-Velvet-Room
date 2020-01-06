@@ -22,10 +22,11 @@ class PersonaInfo extends Component{
 		this.props.editContent(this.state.data)
 	}
 	handleDelete=()=>{
-		PersonasModel.deletePersona(this.state.data.name)
-		alert("Deleted "+this.state.data.name)
-		this.props.fetchData()
-		this.setState({redirect:true})
+		if (window.confirm(`Are you sure you want delete ${this.state.data.name}?`)){		
+			PersonasModel.deletePersona(this.state.data.name)
+			this.props.fetchData()
+			this.setState({redirect:true})
+		}
 	}
 	render(){
 		let stats
