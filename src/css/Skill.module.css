@@ -19,7 +19,8 @@
 .form{
 	float:bottom;
 	justify-content:center;
-	margin:0px;
+	margin:5px;
+	border-top:2px solid #d40203;
 }
 p{
 	margin:0px;
